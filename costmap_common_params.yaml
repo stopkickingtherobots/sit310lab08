@@ -1,0 +1,5 @@
+robot_radius: 0.5
+
+observation_sources: point_cloud_sensor
+
+point_cloud_sensor: {sensor_frame: odom, data_type: PointCloud, topic: /zumo/objectcloud, marking: true, clearing: true}

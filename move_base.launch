@@ -1,0 +1,26 @@
+<launch>
+<master auto="start"/>
+
+<!--- Run AMCL -->
+	<include file="$(find amcl)/examples/amcl_diff.launch" />
+
+		<param name="tf_prefix" type="string" value=""/>
+
+		<node pkg="move_base" type="move_base" respawn="false" name="move_base"	output="screen">
+
+		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="global_costmap" />		
+
+
+		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="local_costmap" />	
+
+<!---
+		<rosparam file="$(find lab8)/local_costmap_params.yaml"	command="load" />
+-->
+<!---
+		<rosparam file="$(find lab8)/global_costmap_params.yaml" command="load" />
+-->
+<!---
+		<rosparam file="$(find lab8)/base_local_planner_params.yaml" command="load" />
+-->
+</node>
+</launch>
