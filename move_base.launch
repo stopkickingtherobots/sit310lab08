@@ -13,6 +13,11 @@
 
 		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="local_costmap" />	
 
+<!--- 
+	move_base.launch will run with the below rosparams commented out,
+	but i get various "TypeError: cannot marshal None unless allow_none is enabled" errors when not commented
+-->
+
 <!---
 		<rosparam file="$(find lab8)/local_costmap_params.yaml"	command="load" />
 -->
