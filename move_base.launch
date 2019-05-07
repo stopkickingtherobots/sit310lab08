@@ -10,22 +10,24 @@
 
 		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="global_costmap" />		
 
-
 		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="local_costmap" />	
 
 <!--- 
-	move_base.launch will run with the below rosparams commented out,
-	but i get various "TypeError: cannot marshal None unless allow_none is enabled" errors when not commented
+	Was getting the following errors: 
+	"load_parameters: unable to set parameters (last param was [/move_base/global_costmap/point_cloud_sensor/clearing=True]): cannot marshal None unless allow_none is enabled"
+ 	
+	Changed the rosparams below from this: <rosparam file="$(find lab8)/local_costmap_params.yaml"	command="load" />
+								  to this: <rosparam command="load" file="$(find lab8)/local_costmap_params.yaml" ns="local_costmap" />
+
+	The first format was not correct yaml syntax, also needed to delete the first line of the corresponding files.
+	
+	The post i found that helped: http://ros-users.122217.n3.nabble.com/problem-about-move-base-in-navigation-stack-td2096229.html 
 -->
 
-<!---
-		<rosparam file="$(find lab8)/local_costmap_params.yaml"	command="load" />
--->
-<!---
-		<rosparam file="$(find lab8)/global_costmap_params.yaml" command="load" />
--->
-<!---
-		<rosparam file="$(find lab8)/base_local_planner_params.yaml" command="load" />
--->
+		<rosparam command="load" file="$(find lab8)/local_costmap_params.yaml" ns="local_costmap" />
+
+		<rosparam command="load" file="$(find lab8)/global_costmap_params.yaml" ns="global_costmap" />
+
+		<rosparam command="load" file="$(find lab8)/base_local_planner_params.yaml" ns="TrajectoryPlannerROS" />
 </node>
 </launch>
