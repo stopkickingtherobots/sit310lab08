@@ -5,16 +5,14 @@
 	<include file="$(find amcl)/examples/amcl_diff.launch" />
 
 		<param name="tf_prefix" type="string" value=""/>
-
 		<node pkg="move_base" type="move_base" respawn="false" name="move_base"	output="screen">
-
-		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="global_costmap" />		
-
+		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="global_costmap" />
 		<rosparam file="$(find lab8)/costmap_common_params.yaml" command="load" ns="local_costmap" />	
 
 <!--- 
 	Was getting the following errors: 
-	"load_parameters: unable to set parameters (last param was [/move_base/global_costmap/point_cloud_sensor/clearing=True]): cannot marshal None unless allow_none is enabled"
+	"load_parameters: unable to set parameters (last param was [/move_base/global_costmap/point_cloud_sensor/clearing=True]): 
+	cannot marshal None unless allow_none is enabled"
  	
 	Changed the rosparams below from this: <rosparam file="$(find lab8)/local_costmap_params.yaml"	command="load" />
 								  to this: <rosparam command="load" file="$(find lab8)/local_costmap_params.yaml" ns="local_costmap" />
@@ -25,9 +23,7 @@
 -->
 
 		<rosparam command="load" file="$(find lab8)/local_costmap_params.yaml" ns="local_costmap" />
-
 		<rosparam command="load" file="$(find lab8)/global_costmap_params.yaml" ns="global_costmap" />
-
 		<rosparam command="load" file="$(find lab8)/base_local_planner_params.yaml" ns="TrajectoryPlannerROS" />
 </node>
 </launch>
