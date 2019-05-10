@@ -1,0 +1,24 @@
+rostopic echo tf
+
+---
+transforms: 
+  - 
+    header: 
+      seq: 0
+      stamp: 
+        secs: 1557449127
+        nsecs: 465979099
+      frame_id: "odom"
+    child_frame_id: "base_link"
+    transform: 
+      translation: 
+        x: 7.94093388051e-23
+        y: 1.38777878078e-16
+        z: 0.0
+      rotation: 
+        x: 0.0
+        y: 0.0
+        z: 6.93889390391e-17
+        w: 1.0
+---
+
